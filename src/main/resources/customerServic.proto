@@ -1,0 +1,37 @@
+syntax ="proto3";
+option java_package="org.sid.customersataservice.stub";
+service CustomerService{
+  rpc findAllCustomers(GetAllCustomersRequest) returns (GetAllCustomersResponse);
+  rpc findCustomerById(findCustomerByIdRequest) returns(findCustomerByIdResponse);
+  rpc saveCustomer(saveCustomerRequest) returns (saveCustomerResponse);
+}
+message GetAllCustomersRequest {
+
+}
+message GetAllCustomersResponse {
+repeated Customer customers=1;
+
+}
+message findCustomerByIdRequest{
+  int64 id=1;
+}
+message findCustomerByIdResponse{
+  Customer customer=1;
+}
+message saveCustomerRequest{
+  CustomerRequest customer=1;
+}
+message saveCustomerResponse{
+  Customer customer=1;
+}
+message Customer{
+ int64 id=1;
+ string name=2;
+ string email=3;
+
+}
+message CustomerRequest{
+  string name=1;
+  string email=2;
+
+}
